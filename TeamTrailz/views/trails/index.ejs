@@ -1,21 +1,16 @@
 <%- include('../partials/header') %>
-<table id="list">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Location</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% trails.forEach(function(t) { %>
-    <tr>
-      <td><%= t.title %></td>
-      <td><%= t.location %></td>
-      <td><a href="">DETAILS</a></td>
-    </tr>
-    <% }); %>
-  </tbody>
-</table>
 
+<div class="container">
+  <% trails.forEach(function(t) { %>
+  <div class="card text-center mt-4" style="width: 18rem">
+    <div class="card-body">
+      <h5 class="card-title"><%= t.title %></h5>
+      <h6 class="card-subtitle mb-2 text-muted"><%= t.location %></h6>
+      <p class="card-text">Distance: <%= t.distance %> km</p>
+      <p class="card-text">Difficulty: <%= t.difficulty %></p>
+      <a href="/trails/<%= t._id %>" class="btn btn-primary">Trail Info</a>
+    </div>
+  </div>
+  <% }); %>
+</div>
 <%- include('../partials/footer') %>

@@ -12,6 +12,14 @@ const trailSchema = new Schema(
       type: String,
       required: true,
     },
+    distance: {
+      type: Number,
+      required: true,
+    },
+    difficulty: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,
