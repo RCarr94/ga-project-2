@@ -24,7 +24,6 @@ function show(req, res) {
     console.log(trail);
     res.render('trails/show', { title: 'Trail Info', trail });
   });
-  // .populate('comments') --- might need to add this, look at Mongoose Way in W8 D3
 }
 
 module.exports = {

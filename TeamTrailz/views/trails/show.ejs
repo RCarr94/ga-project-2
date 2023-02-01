@@ -1,6 +1,6 @@
 <%- include('../partials/header') %>
 
-<section id="">
+<section>
   <div>Trail</div>
   <div><%= trail.title %></div>
 
@@ -18,7 +18,7 @@
 <h2>Comments</h2>
 
 <% if(user) { %>
-<form action="POST" action="/trails/<%= trail._id %>/comments" id="">
+<form method="POST" action="/trails/<%= trail._id %>/comments">
   <textarea name="content"></textarea>
   <label>Challenge Level:</label>
   <select name="challengeLvl">
@@ -35,6 +35,36 @@
 
 <br />
 
-
-
-<%- include('../partials/footer') %>
+<% if (trail.comments.length) { %>
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Date</th>
+      <th>Comment</th>
+      <th>Personal Challenge Level</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% trail.comments.forEach(function(c) { %>
+    <tr>
+      <td class="">
+        <img src="<%= c.userAvatar%>" referrerpolicy="no-referrer" alt="User Avatar" />
+        <%=c.userName%>
+      </td>
+      <td><%= c.createdAt.toLocaleDateString() %></td>
+      <td><%= c.content %></td>
+      <td><%= c.challengeLvl %></td>
+      <td>
+        <% if (user && user.equals(c.user)) { %>
+        <form action="/comments/<%= c._id %>?_method=DELETE" method="POST">
+          <button type="submit">X</button>
+        </form>
+        <% } %>
+      </td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
+<% } %> <%- include('../partials/footer') %>
