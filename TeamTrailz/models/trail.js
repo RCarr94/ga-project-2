@@ -2,6 +2,19 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
+const commentSchema = new Schema(
+  {
+    content: { type: String, required: true },
+    challengeLvl: { type: String, required: true },
+    user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+    userName: String,
+    userAvatar: String,
+  },
+  {
+    timestamps: true,
+  }
+);
+
 const trailSchema = new Schema(
   {
     title: {
@@ -20,6 +33,7 @@ const trailSchema = new Schema(
       type: String,
       required: true,
     },
+    comments: [commentSchema],
   },
   {
     timestamps: true,

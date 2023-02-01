@@ -17,6 +17,24 @@
 <br /><br />
 <h2>Comments</h2>
 
+<% if(user) { %>
+<form action="POST" action="/trails/<%= trail._id %>/comments" id="">
+  <textarea name="content"></textarea>
+  <label>Challenge Level:</label>
+  <select name="challengeLvl">
+    <option value="🟢">Easy</option>
+    <option value="🟡">Moderate</option>
+    <option value="🟠">Challenging</option>
+    <option value="🔴">Experienced</option>
+  </select>
+  <input type="submit" value="Add Comment" />
+</form>
+<% } else { %>
+<p>Login to add Comments</p>
+<% } %>
+
+<br />
+
 
 
 <%- include('../partials/footer') %>
