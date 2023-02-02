@@ -1,5 +1,5 @@
 <%- include('../partials/header') %>
-
+<form action="/favourites" method="POST">
 <section>
   <div>Trail</div>
   <div><%= trail.title %></div>
@@ -12,22 +12,30 @@
 
   <div>Difficulty</div>
   <div><%= trail.difficulty %></div>
+  <button type="submit" class="btn btn-primary">Add to Favs</button>
 </section>
+</form>
 
 <br /><br />
 <h2>Comments</h2>
 
 <% if(user) { %>
 <form method="POST" action="/trails/<%= trail._id %>/comments">
-  <textarea name="content"></textarea>
-  <label>Challenge Level:</label>
-  <select name="challengeLvl">
-    <option value="🟢">Easy</option>
-    <option value="🟡">Moderate</option>
-    <option value="🟠">Challenging</option>
-    <option value="🔴">Experienced</option>
-  </select>
-  <input type="submit" value="Add Comment" />
+  <div class="mb-3">
+    <textarea class="form-control" name="content"></textarea>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Challenge Level:</label>
+    <select class="form-select" name="challengeLvl" required>
+      <option selected disabled value="">Choose...</option>
+      <option value="🟢">Easy</option>
+      <option value="🟡">Moderate</option>
+      <option value="🟠">Challenging</option>
+      <option value="🔴">Experienced</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Add Comment</button>
 </form>
 <% } else { %>
 <p>Login to add Comments</p>
@@ -41,8 +49,8 @@
     <tr>
       <th>User</th>
       <th>Date</th>
-      <th>Comment</th>
       <th>Personal Challenge Level</th>
+      <th>Comment</th>
       <th></th>
     </tr>
   </thead>
@@ -54,8 +62,8 @@
         <%=c.userName%>
       </td>
       <td><%= c.createdAt.toLocaleDateString() %></td>
-      <td><%= c.content %></td>
       <td><%= c.challengeLvl %></td>
+      <td><%= c.content %></td>
       <td>
         <% if (user && user.equals(c.user)) { %>
         <form action="/comments/<%= c._id %>?_method=DELETE" method="POST">

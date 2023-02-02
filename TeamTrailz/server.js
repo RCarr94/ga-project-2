@@ -14,6 +14,7 @@ require('./config/passport');
 const indexRouter = require('./routes/index');
 const trailsRouter = require('./routes/trails');
 const commentsRouter = require('./routes/comments');
+const favouritesRouter = require('./routes/favourites');
 
 var app = express();
 
@@ -54,6 +55,7 @@ app.use('/', indexRouter);
 
 app.use('/trails', trailsRouter);
 app.use('/', isLoggedIn, commentsRouter);
+app.use('/', isLoggedIn, favouritesRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

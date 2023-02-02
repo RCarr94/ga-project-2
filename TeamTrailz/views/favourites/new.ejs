@@ -1,0 +1,10 @@
+<%- include('../partials/header') %>
+
+<p>Hello</p>
+<% if(favourites) { %>
+<% favourites.forEach(function(f) { %>
+    <h1> <%= f.userName %></h1>
+    <% }); %>
+    <% } %>
+
+<%- include('../partials/footer') %>
