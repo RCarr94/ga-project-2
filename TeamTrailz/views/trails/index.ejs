@@ -9,6 +9,10 @@
       <p class="card-text">Distance: <%= t.distance %> km</p>
       <p class="card-text">Difficulty: <%= t.difficulty %></p>
       <a href="/trails/<%= t._id %>" class="btn btn-primary">Trail Info</a>
+                  <form action="/trails/<%= t._id %>?_method=DELETE" method="POST">
+                    <input type="submit" value="X">
+                  </form>
+                  </div>
     </div>
   </div>
   <% }); %>

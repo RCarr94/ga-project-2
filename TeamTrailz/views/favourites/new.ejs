@@ -1,7 +1,7 @@
 <%- include('../partials/header') %>
 
 <form action="/favourites" method="POST">
-    <select name="title" >
+    <select name="trail" >
         <% trails.forEach(function(t) { %>
         <option><%= t.title %></option>
         <% }) %>

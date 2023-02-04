@@ -1,5 +1,5 @@
 const Trail = require('../models/trail');
-const User = require('../models/user');
+const Favourite = require('../models/favourite')
 
 
 function newFavourite(req, res) {
@@ -10,34 +10,35 @@ function newFavourite(req, res) {
 }
 
 function create(req, res) {
-  const fav = new (req.body);
-  trail.user = req.user._id;
-  trail.save(function (err) {
-    if (err) return res.redirect('/trails/new');
-    res.redirect(`/trails/${trail._id}`);
+  const favourite = new Favourite(req.body);
+  favourite.user = req.user._id;
+  favourite.save(function (err) {
+    if (err) return res.redirect('/favourites/new');
+    console.log(favourite);
+    res.redirect(`/trails/`);
   });
 }
 
-function create(req, res) {
-  Trail.findById(req.params.id, function (err, trail) {
-    const favourite = {
-      ...req.body,
-      user: req.user._id,
-      userName: req.user.name,
-    };
+function index(req, res) {
+  Favourite.find({}, function (err, favourite) {
+    res.render('favourites/index', { title: 'Favourite Trails', favourite });
+  });
+}
 
-    trail.favourites.push(comment);
-    console.log(comment);
-    trail.save(function (err) {
-      console.log('error', err);
-      res.redirect(`/trails/${trail._id}`);
-    });
+function deleteFavourite(req, res) {
+  Favourite.findByIdAndDelete(req.params.id, function (err, favourite) {
+    if (err) return res.redirect('/favourites');
+    console.log(favourite);
+    res.redirect('/favourites');
   });
 }
 
 
 module.exports = {
   new: newFavourite,
+  create,
+  index,
+  delete: deleteFavourite,
 };
 
 // What Jibran suggested

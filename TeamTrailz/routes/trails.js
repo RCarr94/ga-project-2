@@ -8,5 +8,6 @@ router.get('/', trailsCtrl.index);
 router.get('/new', isLoggedIn, trailsCtrl.new);
 router.get('/:id', trailsCtrl.show);
 router.post('/', isLoggedIn, trailsCtrl.create);
+router.delete('/:id', trailsCtrl.delete);
 
 module.exports = router;

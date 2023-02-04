@@ -27,9 +27,18 @@ function show(req, res) {
   });
 }
 
+function deleteTrail(req, res) {
+  Trail.findByIdAndDelete(req.params.id, function (err, trail) {
+    if (err) return res.redirect('/trails');
+    console.log(trail);
+    res.redirect('/trails');
+  });
+}
+
 module.exports = {
   index,
   new: newTrail,
   create,
   show,
+  delete: deleteTrail,
 };
