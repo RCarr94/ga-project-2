@@ -1,20 +1,22 @@
 <%- include('../partials/header') %>
-<form action="/favourites" method="POST">
+
+
 <section>
   <div>Trail</div>
-  <div><%= trail.title %></div>
+  <div name="trail"><%= trail.title %></div>
 
   <div>Location</div>
   <div><%= trail.location %></div>
 
   <div>Distance</div>
-  <div><%= trail.distance %></div>
+  <div name="distance"><%= trail.distance %></div>
 
   <div>Difficulty</div>
-  <div><%= trail.difficulty %></div>
-  <button type="submit" class="btn btn-primary">Add to Favs</button>
+  <div name="difficulty"><%= trail.difficulty %></div>
+  <input type="submit" class="btn btn-primary" value="Add to Favs" onclick="window.location.href='/favourites/new'">
+
 </section>
-</form>
+
 
 <br /><br />
 <h2>Comments</h2>

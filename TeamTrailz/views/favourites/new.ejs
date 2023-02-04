@@ -1,10 +1,13 @@
 <%- include('../partials/header') %>
 
-<p>Hello</p>
-<% if(favourites) { %>
-<% favourites.forEach(function(f) { %>
-    <h1> <%= f.userName %></h1>
-    <% }); %>
-    <% } %>
+<form action="/favourites" method="POST">
+    <select name="title" >
+        <% trails.forEach(function(t) { %>
+        <option><%= t.title %></option>
+        <% }) %>
+    </select>
+
+<input type="submit" value="Add to Favourites">
+</form>
 
 <%- include('../partials/footer') %>

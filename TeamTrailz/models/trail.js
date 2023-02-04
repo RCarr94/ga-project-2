@@ -15,6 +15,28 @@ const commentSchema = new Schema(
   }
 );
 
+const favouriteSchema = new Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+    },
+    distance: {
+      type: Number,
+      required: true,
+    },
+      difficulty: {
+      type: String,
+      required: true,
+      },
+    user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+    userName: String,
+  },
+  {
+    timestamps: true,
+  }
+);
+
 const trailSchema = new Schema(
   {
     title: {
@@ -34,6 +56,7 @@ const trailSchema = new Schema(
       required: true,
     },
     comments: [commentSchema],
+    favourites: [favouriteSchema],
   },
   {
     timestamps: true,

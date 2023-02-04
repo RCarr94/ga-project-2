@@ -55,7 +55,7 @@ app.use('/', indexRouter);
 
 app.use('/trails', trailsRouter);
 app.use('/', isLoggedIn, commentsRouter);
-app.use('/', isLoggedIn, favouritesRouter);
+app.use('/favourites', isLoggedIn, favouritesRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
