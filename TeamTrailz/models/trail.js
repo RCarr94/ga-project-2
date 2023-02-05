@@ -15,8 +15,6 @@ const commentSchema = new Schema(
   }
 );
 
-
-
 const trailSchema = new Schema(
   {
     title: {
@@ -36,6 +34,9 @@ const trailSchema = new Schema(
       required: true,
     },
     comments: [commentSchema],
+    user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+    userName: String,
+    userAvatar: String,
   },
   {
     timestamps: true,
