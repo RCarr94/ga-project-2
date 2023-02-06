@@ -1,13 +1,19 @@
 <%- include('../partials/header') %>
 
-<form action="/favourites" method="POST">
-    <select name="trail" >
-        <% trails.forEach(function(t) { %>
-        <option><%= t.title %></option>
-        <% }) %>
-    </select>
+    <h1 class="text-center mb-5 mt-5">
+        <%= title %>
+    </h1>
 
-<input type="submit" value="Add to Favourites">
-</form>
+    <form action="/favourites" method="POST">
+        <select name="trail">
+            <% trails.forEach(function(t) { %>
+                <option>
+                    <%= t.title %>
+                </option>
+                <% }) %>
+        </select>
 
-<%- include('../partials/footer') %>
+        <input type="submit" value="Add to Favourites">
+    </form>
+
+    <%- include('../partials/footer') %>

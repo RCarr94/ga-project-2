@@ -1,17 +1,21 @@
-<%- include('../partials/header') %> 
+<%- include('../partials/header') %>
 
-<% favourite.forEach(function(f) { %>
-    <div class="text-center col-sm-12 col-md-6 col-lg-9" style="width: 18rem">
-        <div class="card-body">
-            <h5 class="card-title">
-                <%= f.trail %>
-            </h5>
-            <a href="/trails" class="btn btn-primary">Trail Info</a>
-            <form action="/favourites/<%= f._id %>?_method=DELETE" method="POST">
-            <input type="submit" value="X">
-            </form>
+    <h1 class="text-center mb-5 mt-5">
+        <%= title %>
+    </h1>
+
+    <% favourite.forEach(function(f) { %>
+        <div class="text-center col-sm-12 col-md-6 col-lg-9" style="width: 18rem">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <%= f.trail %>
+                </h5>
+                <a href="/trails" class="btn btn-primary">Trail Info</a>
+                <form action="/favourites/<%= f._id %>?_method=DELETE" method="POST">
+                    <input type="submit" value="X">
+                </form>
+            </div>
         </div>
-    </div>
-    <% }); %>
+        <% }); %>
 
-<%- include('../partials/footer') %>
+            <%- include('../partials/footer') %>

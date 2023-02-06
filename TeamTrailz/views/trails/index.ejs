@@ -1,5 +1,18 @@
 <%- include('../partials/header') %>
 
+  <section id="header" class="jumbotron text-center">
+    <h1 class="display-3">
+      <%= title %>
+    </h1>
+    <p class="lead">Join our community today and help connect more people experience the trails you love.</p>
+    <br>
+    <br>
+    <br>
+  </section>
+
+
+
+
 
   <div class="row">
     <% trails.forEach(function(t) { %>
@@ -7,6 +20,9 @@
         <div class="column">
           <div class="card">
             <div class="card-body">
+              <img
+                src="https://images.unsplash.com/photo-1516214104703-d870798883c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60"
+                alt="" class="card-img-top">
               <h5 class="card-title">
                 <%= t.title %>
               </h5>
