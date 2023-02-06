@@ -32,7 +32,7 @@
               <p class="card-text">Distance: <%= t.distance %> km</p>
               <p class="card-text">Difficulty: <%= t.difficulty %>
               </p>
-              <a href="/trails/<%= t._id %>" class="btn btn-primary">Trail Info</a>
+              <a href="/trails/<%= t._id %>" class="btn btn-outline-success btn-sm">Trail Info</a>
 
               <% if (user) { %>
                 <form action="/trails/<%= t._id %>?_method=DELETE" method="POST" class="mt-3">
