@@ -41,19 +41,28 @@ function deleteComment(req, res, next) {
     });
 }
 
-function update(req, res) {
+function update(req, res, next) {
   Trail.findOne({
     'comments._id': req.params.id,
     'comments.user': req.user._id,
-  }).then(function (err, trail) {
-    const commentSubdoc = trail.comments.id(req.params.id);
+  })
+    .then(function (trail) {
+      if (!trail) return res.redirect(`/trails/${trail._id}`);
 
-    if (!commentSubdoc.userId.equals(req.user._id)) return res.redirect(`/trails/${trail._id}`);
-    commentSubdoc.text = req.body.text;
-    trail.save(function (err) {
-      res.redirect(`/trails/${trail._id}`);
+      commentSubdoc = trail.comments.id(req.params.id);
+      commentSubdoc.content = req.body.content;
+      trail
+        .save()
+        .then(function () {
+          res.redirect(`/trails/${trail._id}`);
+        })
+        .catch(function (err) {
+          next(err);
+        });
+    })
+    .catch(function (err) {
+      next(err);
     });
-  });
 }
 
 module.exports = {

@@ -63,10 +63,10 @@
         <% if (trail.comments.length) { %>
           <section style="background-color: #305535">
             <% trail.comments.forEach(function(c) { %>
-              <div class="container my-5 py-5 text-dark">
+              <div class="container my-3 py-3 text-dark">
                 <div class="row d-flex justify-content-center">
                   <div class="col-md-11 col-lg-9 col-xl-7">
-                    <div class="d-flex flex-start mb-4">
+                    <div class="d-flex flex-start mb-1">
                       <img class="rounded-circle shadow-1-strong me-3" src="<%= c.userAvatar%>"
                         referrerpolicy="no-referrer" alt="avatar" width="65" height="65" />
                       <div class="card w-100">
@@ -98,11 +98,12 @@
                                         d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
                                     </svg>
                                   </button>
+
                                 </form>
                                 <form action="/comments/<%= c._id %>?_method=PUT" method="POST">
                                   <!-- Value attribute is being set to the comment's current text -->
                                   <input name="content" value="<%= c.content %>">
-                                  <button type="submit">UPDATE COMMENT</button>
+                                  <button type="submit">Update</button>
                                 </form>
                                 <% } %>
                             </div>
