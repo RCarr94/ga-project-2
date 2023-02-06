@@ -99,6 +99,11 @@
                                     </svg>
                                   </button>
                                 </form>
+                                <form action="/comments/<%= c._id %>?_method=PUT" method="POST">
+                                  <!-- Value attribute is being set to the comment's current text -->
+                                  <input name="content" value="<%= c.content %>">
+                                  <button type="submit">UPDATE COMMENT</button>
+                                </form>
                                 <% } %>
                             </div>
                           </div>

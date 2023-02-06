@@ -41,7 +41,23 @@ function deleteComment(req, res, next) {
     });
 }
 
+function update(req, res) {
+  Trail.findOne({
+    'comments._id': req.params.id,
+    'comments.user': req.user._id,
+  }).then(function (err, trail) {
+    const commentSubdoc = trail.comments.id(req.params.id);
+
+    if (!commentSubdoc.userId.equals(req.user._id)) return res.redirect(`/trails/${trail._id}`);
+    commentSubdoc.text = req.body.text;
+    trail.save(function (err) {
+      res.redirect(`/trails/${trail._id}`);
+    });
+  });
+}
+
 module.exports = {
   create,
   delete: deleteComment,
+  update,
 };
